@@ -6,7 +6,7 @@ const {
 module.exports = withModuleFederationPlugin({
   name: 'mfe-module-federation',
   exposes: {
-   './Component': './apps/mfe-module-federation/src/app/app.component.ts',
+    './component': './apps/mfe-module-federation/src/app/example/example.component.ts',
   },
   shared: {
     ...shareAll({

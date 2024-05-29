@@ -33,7 +33,7 @@
         "customWebpackConfig": {
           "path": "apps/shell/webpack.config.js"
         },
-        "commonChunk": true
+        "commonChunk": false
       },
       "configurations": {
         "production": {

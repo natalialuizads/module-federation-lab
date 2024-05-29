@@ -7,23 +7,23 @@ export const appRoutes: Route[] = [
     loadComponent: () => loadRemoteModule({
       type: 'module',
       remoteEntry: 'http://localhost:4202/remoteEntry.js',
-      exposedModule: './Component'
+      exposedModule: './component'
     })
-     .then((c) => c.AppComponent)
-     .catch((err) => {
-      console.log('Error lazy loading', err)
-     })
+      .then((c) => c.ExampleComponent)
+      .catch((err) => {
+        console.log('Error lazy loading', err);
+      })
   },
   {
     path: 'mfe-web-components',
     loadComponent: () => loadRemoteModule({
       type: 'module',
       remoteEntry: 'http://localhost:4201/remoteEntry.js',
-      exposedModule: './Component'
+      exposedModule: './component'
     })
-     .then((c) => c.AppComponent)
-     .catch((err) => {
-      console.log('Error lazy loading', err)
-     })
+      .then((c) => c.ExampleComponent)
+      .catch((err) => {
+        console.log('Error lazy loading', err);
+      })
   }
 ];

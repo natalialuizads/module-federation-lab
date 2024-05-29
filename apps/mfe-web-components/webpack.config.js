@@ -30,7 +30,7 @@ module.exports = {
          name: "mfeWebComponents",
          filename: "remoteEntry.js",
          exposes: {
-             './Component': './apps/mfe-web-components/src/app/app.component.ts',
+             './component': 'apps/mfe-web-components/src/app/example/example.component.ts',
          },
 
         shared: share({

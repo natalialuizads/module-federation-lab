@@ -33,7 +33,7 @@
         "customWebpackConfig": {
           "path": "apps/mfe-web-components/webpack.config.js"
         },
-        "commonChunk": true
+        "commonChunk": false
       },
       "configurations": {
         "production": {
