@@ -1,0 +1,110 @@
+{
+  "name": "mfe-module-federation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/mfe-module-federation/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/mfe-module-federation",
+        "index": "apps/mfe-module-federation/src/index.html",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/mfe-module-federation/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/mfe-module-federation/public"
+          }
+        ],
+        "styles": [
+          "apps/mfe-module-federation/src/styles.scss"
+        ],
+        "scripts": [],
+        "main": "apps/mfe-module-federation/src/main.ts",
+        "customWebpackConfig": {
+          "path": "apps/mfe-module-federation/webpack.config.js"
+        },
+        "commonChunk": false
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/mfe-module-federation/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "mfe-module-federation:build:production"
+        },
+        "development": {
+          "buildTarget": "mfe-module-federation:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
+    },
+    "extract-i18n": {
+      "executor": "ngx-build-plus:extract-i18n",
+      "options": {
+        "buildTarget": "mfe-module-federation:build",
+        "extraWebpackConfig": "apps/mfe-module-federation/webpack.config.js"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/mfe-module-federation/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "mfe-module-federation:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/mfe-module-federation/browser",
+        "spa": true
+      }
+    }
+  }
+}
