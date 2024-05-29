@@ -59,7 +59,11 @@
           "buildTarget": "mfe-web-components:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -81,7 +85,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "mfe-web-components:build",
-        "port": 4200,
+        "port": 4201,
         "staticFilePath": "dist/apps/mfe-web-components/browser",
         "spa": true
       }

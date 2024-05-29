@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "serve:mfe-module-federation": "nx run mfe-module-federation:serve:development",
+    "serve:mfe-web-components":" nx run mfe-web-components:serve:development",
+    "serve:hybrid": "nx run mfe-hybrid:serve:development",
+    "serve:shell": "nx run shell:serve:development",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
