@@ -14,9 +14,6 @@
       "options": {
         "outputPath": "dist/apps/mfe-hybrid",
         "index": "apps/mfe-hybrid/src/index.html",
-        "polyfills": [
-          "zone.js"
-        ],
         "tsConfig": "apps/mfe-hybrid/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -57,7 +54,8 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "namedChunks": true
         }
       },
       "defaultConfiguration": "production"

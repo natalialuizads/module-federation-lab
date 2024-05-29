@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@module-federation-lab/mfe-wrapper": ["libs/mfe-wrapper/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
