@@ -15,7 +15,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false
-  },   
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -27,30 +27,20 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
         library: { type: "module" },
-
-        // For remotes (please adjust)
-        // name: "mfeWebComponents",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './apps/mfe-web-components/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
-        // remotes: {
-        //     "mfeModuleFederation": "http://localhost:4200/remoteEntry.js",
-        //     "shell": "http://localhost:4200/remoteEntry.js",
-
-        // },
+         name: "mfeWebComponents",
+         filename: "remoteEntry.js",
+         exposes: {
+             './Component': './apps/mfe-web-components/src/app/app.component.ts',
+         },
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
+          "@angular/core": { requiredVersion: 'auto' },
+          "@angular/common": { requiredVersion: 'auto' },
+          "@angular/common/http": { requiredVersion: 'auto' },
+          "@angular/router": { requiredVersion: 'auto' },
           ...sharedMappings.getDescriptors()
         })
-        
+
     }),
     sharedMappings.getPlugin()
   ],
