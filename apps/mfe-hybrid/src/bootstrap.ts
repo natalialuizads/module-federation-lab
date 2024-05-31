@@ -4,7 +4,6 @@ import { AppComponent } from './app/app.component';
 import { createCustomElement } from '@angular/elements';
 import { ApplicationRef } from '@angular/core';
 
-
 (async () => {
   const appRef: ApplicationRef  = await createApplication(appConfig);
 
@@ -12,9 +11,9 @@ import { ApplicationRef } from '@angular/core';
 
   if(tagElement) return;
 
-  const rootElement = createCustomElement(AppComponent, {
+  const mfeHybrid = createCustomElement(AppComponent, {
     injector: appRef.injector
   });
 
-  customElements.define('mfe-hybrid', rootElement);
+  customElements.define('mfe-hybrid', mfeHybrid);
 })();
