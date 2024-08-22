@@ -15,6 +15,10 @@ export const appRoutes: Route[] = [
         console.log('Error lazy loading', err);
       })
   },
+  {
+    path: 'mfe-horizontal-split',
+    loadComponent: () => import('./pages/horizontal-split.component').then((m) => m.HorizontalSplitComponent)
+  },
    {
      path: 'hybrid',
      loadComponent: () => loadRemoteModule({
@@ -31,7 +35,7 @@ export const appRoutes: Route[] = [
     path: 'web-components',
     component: MfeWrapperComponent,
     data: {
-       type: 'module',
+            type: 'module',
             remoteEntry: 'http://localhost:4203/remoteEntry.js',
             remoteName: 'mfe-hybrid',
             exposedModule: './web-components',
