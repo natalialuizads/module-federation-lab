@@ -13,6 +13,7 @@ module.exports = withModuleFederationPlugin({
   shared: {
     ...shareAll({
       requiredVersion: 'auto',
+      singleton: true
     }),
   },
 });
