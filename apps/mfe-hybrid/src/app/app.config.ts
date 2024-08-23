@@ -1,4 +1,4 @@
-import { ApplicationConfig, NgZone, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { ApplicationConfig, NgZone } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 

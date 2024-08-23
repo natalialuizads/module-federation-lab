@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@module-federation-lab/logger": ["libs/logger/src/index.ts"],
       "@module-federation-lab/mfe-wrapper": ["libs/mfe-wrapper/src/index.ts"]
     }
   },

@@ -3,6 +3,9 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { createCustomElement } from '@angular/elements';
 import { ApplicationRef } from '@angular/core';
+import { config } from '@module-federation-lab/logger';
+
+config.initMicrofrontend('Mfe2');
 
 (async () => {
   const appRef: ApplicationRef  = await createApplication(appConfig);
