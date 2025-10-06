@@ -11,4 +11,8 @@ import { ExampleComponent } from './example/example.component';
 })
 export class AppComponent {
   title = 'card';
+
+  constructor() {
+    console.log('API URL:', process.env.API_URL);
+  }
 }

@@ -2,11 +2,23 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
 const share = mf.share;
+const webpack = require('webpack');
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
   [/* mapped paths to share */]);
+
+  function getClientEnvironment() {
+    const envVars = {
+      API_URL: process.env.API_URL,
+      VERSION: process.env.VERSION
+    };
+
+    return {
+      'process.env': JSON.stringify(envVars),
+    };
+  }
 
 module.exports = {
   output: {
@@ -25,6 +37,7 @@ module.exports = {
     outputModule: true
   },
   plugins: [
+    new webpack.DefinePlugin(getClientEnvironment()),
     new ModuleFederationPlugin({
         library: { type: "module" },
 
@@ -49,8 +62,8 @@ module.exports = {
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           ...sharedMappings.getDescriptors()
         })
-
     }),
-    sharedMappings.getPlugin()
+    sharedMappings.getPlugin(),
+
   ],
 };

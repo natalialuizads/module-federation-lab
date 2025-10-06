@@ -11,5 +11,7 @@ import { RouterModule } from '@angular/router';
 export class AppComponent {
   constructor() {
     (globalThis as any).ngZone = inject(NgZone);
+    console.log('API URL:', process.env.API_URL);
+    console.log('API VERSION', process.env.VERSION);
   }
 }

@@ -2,8 +2,19 @@ const {
   shareAll,
   withModuleFederationPlugin
 } = require('@angular-architects/module-federation/webpack');
+const webpack = require('webpack');
 
-module.exports = withModuleFederationPlugin({
+function getClientEnvironment() {
+  const envVars = {
+    API_URL: process.env.API_URL
+  };
+
+  return {
+    'process.env': JSON.stringify(envVars),
+  };
+}
+
+const moduleFederationConfig = withModuleFederationPlugin({
   name: 'mfe-card',
   filename: 'remoteEntry.js',
   exposes: {
@@ -12,8 +23,11 @@ module.exports = withModuleFederationPlugin({
   },
   shared: {
     ...shareAll({
-      requiredVersion: 'auto',
-      singleton: true
+      requiredVersion: 'auto'
     }),
   },
 });
+
+moduleFederationConfig.plugins.push(new webpack.DefinePlugin(getClientEnvironment()));
+
+module.exports = moduleFederationConfig;
